@@ -1,185 +1,148 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIKTOK DOWNPRO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Iceberg&family=Grape+Nuts&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIKDOWN PRO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Iceberg&family=Grape+Nuts&family=Anton&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Iceberg', sans-serif;
-      background: linear-gradient(135deg, #000000, #111111);
+      padding: 0;
+      background: black;
+      font-family: sans-serif;
       color: white;
       overflow-x: hidden;
     }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
     h1 {
       font-family: 'Germania One', cursive;
-      font-size: 60px;
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 0 10px red, 0 0 20px red;
+      font-size: 50px;
+      color: #ff004f;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px red;
     }
-    .input-container {
-      text-align: center;
+    .developer {
+      font-size: 14px;
+      color: yellow;
+      text-shadow: 0 0 5px yellow;
+    }
+    .huzii {
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 20px #ff004f;
+    }
+    .input-box {
       margin-top: 20px;
+      position: relative;
     }
     input[type="text"] {
-      padding: 12px;
-      width: 60%;
+      padding: 10px;
+      width: 80%;
+      font-size: 18px;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
+      outline: none;
+      border-radius: 5px;
+    }
+    .paste-clear-btn {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ff004f;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
     .download-btn {
-      background: #ff0055;
+      margin-top: 15px;
+      font-family: 'Grape Nuts', cursive;
+      background: #ff004f;
       color: white;
-      padding: 12px 30px;
+      padding: 10px 30px;
+      font-size: 20px;
       border: none;
       border-radius: 10px;
-      margin-top: 20px;
-      font-family: 'Grape Nuts', cursive;
-      font-size: 22px;
+      box-shadow: 0 0 20px #ff004f;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055;
     }
     .features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      max-width: 800px;
-      margin: 40px auto;
-    }
-    .feature-box {
-      border: 2px solid red;
-      padding: 20px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      box-shadow: 0 0 20px red;
-      border-radius: 15px;
-      font-family: Impact, sans-serif;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .social-icons a {
-      display: inline-block;
-      padding: 15px;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: 0 0 15px #fff;
-    }
-    .social-icons img {
-      width: 50px;
-      height: 50px;
-      filter: drop-shadow(0 0 10px #0ff);
-    }
-    .footer {
-      text-align: center;
       margin-top: 30px;
     }
-    .huzii {
-      font-size: 40px;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+    .feature-box {
+      padding: 20px;
+      background: rgba(255, 0, 79, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 0 20px red;
+      font-family: 'Anton', sans-serif;
+      font-size: 18px;
     }
-    .developer {
-      font-size: 12px;
-      color: yellow;
-      text-shadow: 0 0 5px yellow;
+    .icons {
+      margin-top: 30px;
     }
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
+    .icons a {
+      margin: 0 10px;
+      font-size: 30px;
+      text-shadow: 0 0 10px currentColor;
     }
-    .popup-content {
-      background: rgba(10, 10, 10, 0.9);
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 0 25px #0ff;
-      position: relative;
+    .icons .fa-whatsapp {
+      color: #25d366;
     }
-    .popup-content h2 {
-      color: #fff;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    .popup .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      color: #fff;
-      cursor: pointer;
-    }
-    .countdown {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #ff0;
-      font-weight: bold;
-      text-shadow: 0 0 10px #ff0;
+    .icons .fa-telegram {
+      color: #0088cc;
     }
   </style>
+  <script>
+    function handlePasteClear(btn) {
+      const input = document.getElementById("url");
+      if (btn.innerText === "Paste") {
+        navigator.clipboard.readText().then(text => {
+          input.value = text;
+          btn.innerText = "Clear";
+        });
+      } else {
+        input.value = "";
+        btn.innerText = "Paste";
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1>TIKTOK DOWNPRO</h1>  <div class="input-container">
-    <input type="text" id="videoUrl" placeholder="Paste your TikTok link here...">
-    <br>
-    <button class="download-btn" onclick="showPopup()">Download Now</button>
-  </div>  <div class="features">
-    <div class="feature-box">100% Free</div>
-    <div class="feature-box">Without Watermark</div>
-    <div class="feature-box">High Quality Video</div>
-    <div class="feature-box">Fast Download</div>
-  </div>  <div class="social-icons">
-    <a href="https://wa.me/923407699974"><img src="https://img.icons8.com/fluency/48/whatsapp.png" alt="WhatsApp"/></a>
-    <a href="https://whatsapp.com/channel/0029Vb2TegQ8aKvLcZs92Y3r"><img src="https://img.icons8.com/fluency/48/whatsapp.png" alt="WhatsApp Channel"/></a>
-    <a href="https://t.me/TECHBYHUZII"><img src="https://img.icons8.com/fluency/48/telegram-app.png" alt="Telegram"/></a>
-    <a href="https://www.youtube.com/@TECHBYHUZII"><img src="https://img.icons8.com/fluency/48/youtube-play.png" alt="YouTube"/></a>
-  </div>  <div class="footer">
-    <div class="huzii">HUZII BALOCH</div>
-    <div class="developer">Developer</div>
-  </div>  <div class="popup" id="popup">
-    <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <h2>Join Our Channel</h2>
-      <div class="social-icons">
-        <a href="https://wa.me/923407699974"><img src="https://img.icons8.com/fluency/48/whatsapp.png" /></a>
-        <a href="https://whatsapp.com/channel/0029Vb2TegQ8aKvLcZs92Y3r"><img src="https://img.icons8.com/fluency/48/whatsapp.png" /></a>
-        <a href="https://t.me/TECHBYHUZII"><img src="https://img.icons8.com/fluency/48/telegram-app.png" /></a>
-        <a href="https://www.youtube.com/@TECHBYHUZII"><img src="https://img.icons8.com/fluency/48/youtube-play.png" /></a>
-      </div>
-      <div class="countdown" id="countdown">Your download will start in 3</div>
-    </div>
-  </div>  <script>
-    function showPopup() {
-      document.getElementById('popup').style.display = 'flex';
-      let count = 3;
-      const interval = setInterval(() => {
-        count--;
-        document.getElementById('countdown').textContent = `Your download will start in ${count}`;
-        if (count === 0) {
-          clearInterval(interval);
-          window.location.href = 'https://example.com/your-download-link'; // Replace with actual link
-        }
-      }, 1000);
-    }
+  <div class="container">
+    <h1>TIKDOWN PRO</h1>
+    <div class="developer">DEVELOPER</div>
+    <div class="huzii">HUZII BALOCH</div><div class="input-box">
+  <input type="text" id="url" placeholder="Paste TikTok video URL here">
+  <div class="paste-clear-btn" onclick="handlePasteClear(this)">Paste</div>
+</div>
 
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-    }
-  </script></body>
+<button class="download-btn">Download Now</button>
+
+<div class="features">
+  <div class="feature-box">100% Free</div>
+  <div class="feature-box">No Watermark</div>
+  <div class="feature-box">High Quality Video</div>
+  <div class="feature-box">Unlimited Downloads</div>
+</div>
+
+<div class="icons">
+  <a href="https://wa.me/923407699974" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://whatsapp.com/channel/0029Vb2TegQ8aKvLcZs92Y3r" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/TECHBYHUZII" target="_blank"><i class="fab fa-telegram"></i></a>
+  <a href="https://youtube.com/@TECHBYHUZII" target="_blank"><i class="fab fa-youtube" style="color:#FF0000"></i></a>
+</div>
+
+  </div>
+</body>
 </html>
