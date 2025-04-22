@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TikDown Pro | No Watermark</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Monoton&family=Iceberg&family=Grape+Nuts&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Charmonman:wght@700&family=Eagle+Lake&family=Monoton&family=Iceberg&family=Grape+Nuts&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
@@ -23,14 +23,14 @@
     }
 
     .logo {
-      font-family: 'Monoton', cursive;
+      font-family: 'Charmonman', cursive;
       font-size: 4rem;
       background: linear-gradient(90deg, #00ffff, #0080ff);
       -webkit-background-clip: text;
       color: transparent;
       margin-bottom: 10px;
       text-shadow: 0 0 20px #00ffff;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
     }
 
     .tagline {
@@ -92,6 +92,11 @@
       color: white;
       box-shadow: 0 0 15px #00ffff;
       animation: pulseBox 2s infinite ease-in-out;
+      cursor: pointer;
+    }
+
+    .neon-box:hover {
+      background: rgba(0, 255, 255, 0.1);
     }
 
     @keyframes pulseBox {
@@ -124,8 +129,8 @@
     }
 
     .huzii {
-      font-family: 'Bonheur Royale', cursive;
-      font-size: 3.5rem;
+      font-family: 'Eagle Lake', cursive;
+      font-size: 3rem;
       background: linear-gradient(90deg, #00ffff, #0080ff);
       -webkit-background-clip: text;
       color: transparent;
@@ -155,23 +160,6 @@
       gap: 20px;
       margin-bottom: 20px;
     }
-
-    .countdown {
-      font-family: 'Monoton', cursive;
-      font-size: 3rem;
-      background: linear-gradient(90deg, #00ffff, #ff00ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px #00ffff;
-      margin: 20px 0;
-      animation: pulse 1s infinite alternate;
-      display: none;
-    }
-
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
-    }
   </style>
 </head>
 <body>
@@ -184,16 +172,15 @@
     <button onclick="startDownload()">Download Now</button>
 
     <div id="result"></div>
-    <div id="countdown" class="countdown"></div>
 
     <div class="neon-boxes">
       <div class="feature-row">
-        <div class="neon-box">💯 Free</div>
-        <div class="neon-box">Without Watermark</div>
+        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">💯 Free</div>
+        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Without Watermark</div>
       </div>
       <div class="feature-row">
-        <div class="neon-box">Fast & Secure</div>
-        <div class="neon-box">Unlimited Downloads</div>
+        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Fast & Secure</div>
+        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Unlimited Downloads</div>
       </div>
     </div>
 
@@ -216,22 +203,7 @@
     async function startDownload() {
       const url = document.getElementById("url").value;
       const result = document.getElementById("result");
-      const countdown = document.getElementById("countdown");
       
-      // Show countdown
-      countdown.style.display = "block";
-      let seconds = 3;
-      
-      const countdownInterval = setInterval(() => {
-        countdown.textContent = seconds;
-        seconds--;
-        
-        if (seconds < 0) {
-          clearInterval(countdownInterval);
-          countdown.style.display = "none";
-        }
-      }, 1000);
-
       result.innerHTML = "Processing...";
       try {
         const res = await fetch(`https://tikwm.com/api/?url=${encodeURIComponent(url)}`);
@@ -245,13 +217,12 @@
           `;
           setTimeout(() => {
             window.location.href = downloadLink;
-          }, 3000);
+          }, 1000);
         } else {
           throw new Error("Invalid or unsupported link.");
         }
       } catch (e) {
         result.innerHTML = `<div style="color:red;">Error: ${e.message}</div>`;
-        countdown.style.display = "none";
       }
     }
   </script>
