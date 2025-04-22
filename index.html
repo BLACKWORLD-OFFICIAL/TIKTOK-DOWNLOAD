@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>TikDown Pro | No Watermark</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Iceberg&family=Grape+Nuts&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Germania+One&family=Iceberg&family=Grape+Nuts&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
@@ -20,33 +21,17 @@
       background: rgba(255, 255, 255, 0.05);
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-    }
-
-    .developer {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-bottom: 10px;
-    }
-
-    .huzii {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, #00ffff, #00ccff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 25px #00ffff;
-      animation: pulseBox 2s infinite ease-in-out;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
     }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
       font-size: 3rem;
-      background: linear-gradient(90deg, #00ffff, #00ccff);
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 0 15px #00ccff;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #00c6ff;
     }
 
     .tagline {
@@ -72,7 +57,7 @@
       padding: 12px 30px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(90deg, #ffdd00, #ffbb00);
+      background: linear-gradient(90deg, #f9d423, #ff4e50);
       color: black;
       font-size: 1.2rem;
       font-weight: bold;
@@ -81,7 +66,7 @@
     }
 
     button:hover {
-      box-shadow: 0 0 15px #ffdd00;
+      box-shadow: 0 0 15px #f9d423;
       transform: scale(1.05);
     }
 
@@ -90,28 +75,30 @@
     }
 
     .neon-boxes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       margin-top: 40px;
     }
 
     .neon-box {
       font-family: 'Bebas Neue', cursive;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid #00ffff;
+      background: rgba(255, 0, 0, 0.1);
+      border: 2px solid red;
       padding: 20px;
       border-radius: 15px;
+      min-width: 130px;
       font-size: 1.2rem;
       color: white;
-      box-shadow: 0 0 15px #00ffff;
+      box-shadow: 0 0 15px red;
       animation: pulseBox 2s infinite ease-in-out;
     }
 
     @keyframes pulseBox {
-      0% { box-shadow: 0 0 15px #00ffff; }
-      50% { box-shadow: 0 0 25px #00ffff; }
-      100% { box-shadow: 0 0 15px #00ffff; }
+      0% { box-shadow: 0 0 15px red; }
+      50% { box-shadow: 0 0 25px red; }
+      100% { box-shadow: 0 0 15px red; }
     }
 
     .social-icons {
@@ -123,7 +110,7 @@
 
     .social-icons a img {
       width: 60px;
-      filter: drop-shadow(0 0 10px #00ffff);
+      filter: drop-shadow(0 0 10px #ff0000);
       transition: 0.3s;
     }
 
@@ -131,12 +118,28 @@
       transform: scale(1.2);
     }
 
+    .developer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .huzii {
+      font-family: 'Germania One', cursive;
+      font-size: 2rem;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px #00c6ff;
+      animation: pulseBox 2s infinite ease-in-out;
+    }
+
     .youtube-link {
       margin-top: 10px;
     }
 
     .youtube-link a {
-      color: #00ffff;
+      color: #ff5555;
       font-size: 1rem;
       font-weight: bold;
       text-decoration: none;
@@ -145,67 +148,22 @@
     .youtube-link a:hover {
       text-decoration: underline;
     }
-  </style>
-</head>
-<body>
 
-  <div class="container">
-    <div class="developer">Developer:</div>
-    <div class="huzii">HUZII BALOCH</div>
-
-    <div class="logo">TikDown Pro</div>
-    <div class="tagline">Download High Quality TikTok Videos Without Watermark</div>
-
-    <input type="text" id="url" placeholder="Paste TikTok video link here..." />
-    <br>
-    <button onclick="startDownload()">Download Now</button>
-
-    <div id="result"></div>
-
-    <div class="neon-boxes">
-      <div class="neon-box">💯 Free</div>
-      <div class="neon-box">Without Watermark</div>
-      <div class="neon-box">Fast & Secure</div>
-      <div class="neon-box">Unlimited Downloads</div>
-    </div>
-
-    <div class="social-icons">
-      <a href="https://wa.me/923407699974"><img src="https://img.icons8.com/fluency/96/whatsapp.png"/></a>
-      <a href="https://whatsapp.com/channel/0029Vb2TegQ8aKvLcZs92Y3r"><img src="https://img.icons8.com/color/96/whatsapp--v1.png"/></a>
-      <a href="https://t.me/TECHBYHUZII"><img src="https://img.icons8.com/color/96/telegram-app--v1.png"/></a>
-      <a href="https://youtube.com/@TECHBYHUZII"><img src="https://img.icons8.com/color/96/youtube-play.png"/></a>
-    </div>
-
-    <div class="youtube-link">
-      <a href="https://youtube.com/@TECHBYHUZII" target="_blank">Watch Tutorials on TECHBYHUZII</a>
-    </div>
-  </div>
-
-  <script>
-    async function startDownload() {
-      const url = document.getElementById("url").value;
-      const result = document.getElementById("result");
-      result.innerHTML = "Processing...";
-      try {
-        const res = await fetch(`https://tikwm.com/api/?url=${encodeURIComponent(url)}`);
-        const data = await res.json();
-        if (data && data.data && data.data.play) {
-          const downloadLink = data.data.play;
-          result.innerHTML = `
-            <a href="${downloadLink}" download="tiktok_video.mp4" style="color:#00ffcc; font-size:1.1rem;">
-              ✅ Click here if download doesn't start
-            </a>
-          `;
-          setTimeout(() => {
-            window.location.href = downloadLink;
-          }, 2000);
-        } else {
-          throw new Error("Invalid or unsupported link.");
-        }
-      } catch (e) {
-        result.innerHTML = `<div style="color:red;">Error: ${e.message}</div>`;
-      }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
     }
-  </script>
-</body>
-</html>
+
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: 15% auto;
+      padding: 20px;
+      border: 136
