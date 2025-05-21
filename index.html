@@ -1,341 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TikDown Pro | No Watermark</title>
-  <link href="https://fonts.googleapis.com/css2?family=Charmonman:wght@700&family=Eagle+Lake&family=Monoton&family=Iceberg&family=Grape+Nuts&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pak Sim Data</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bilbo&family=Bonheur+Royale&family=Foldit&family=Grape+Nuts&family=Iceberg&family=Neonderthaw&family=Stick+No+Bills&display=swap');
+
     body {
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: #fff;
-      font-family: 'Iceberg', sans-serif;
-      text-align: center;
-      padding: 50px 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg, #141e30, #243b55);
+      background-size: 400% 400%;
+      animation: backgroundAnimate 8s infinite;
       margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
     }
+
+    @keyframes backgroundAnimate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
-      max-width: 700px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      padding: 25px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      color: white;
     }
 
-    .logo {
-      font-family: 'Charmonman', cursive;
-      font-size: 4rem;
-      background: linear-gradient(90deg, #00ffff, #0080ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px #00ffff;
-      letter-spacing: 2px;
+    h1 {
+      font-family: 'Bilbo', cursive;
+      font-size: 38px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
     }
 
-    .tagline {
-      font-family: 'Iceberg', cursive;
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 25px;
-    }
-
-    input {
+    input[type="text"] {
       width: 80%;
-      padding: 15px;
+      padding: 12px;
+      border: 2px solid #fff;
       border-radius: 10px;
-      border: none;
       background: rgba(255,255,255,0.1);
       color: white;
-      font-size: 1rem;
+      margin: 10px 0;
+      font-size: 16px;
     }
 
     button {
-      font-family: 'Grape Nuts', cursive;
-      margin-top: 20px;
-      padding: 12px 30px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      padding: 10px 15px;
       border: none;
-      border-radius: 10px;
-      background: linear-gradient(90deg, #ffff00, #ffcc00);
-      color: black;
-      font-size: 1.2rem;
-      font-weight: bold;
+      border-radius: 5px;
       cursor: pointer;
-      transition: 0.3s ease;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 50%;
+      animation: buttonGlow 2s infinite alternate;
+      font-family: 'Iceberg', cursive;
     }
 
-    button:hover {
-      box-shadow: 0 0 15px #ffff00;
-      transform: scale(1.05);
+    @keyframes buttonGlow {
+      0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
     }
 
-    #result {
+    .result {
       margin-top: 20px;
-    }
-
-    .neon-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .neon-box {
-      font-family: 'Bebas Neue', cursive;
-      background: transparent;
-      border: 2px solid #00ffff;
+      background: rgba(0,0,0,0.7);
       padding: 20px;
       border-radius: 15px;
-      min-width: 130px;
-      font-size: 1.2rem;
+      font-size: 14px;
+      text-align: left;
+      white-space: pre-line;
+      display: none;
+      font-family: 'Foldit', cursive;
+    }
+
+    .result .plain {
+      font-family: sans-serif !important;
+    }
+
+    .share-btn {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #25D366, #128C7E);
+      box-shadow: 0 0 10px #25D366;
       color: white;
-      box-shadow: 0 0 15px #00ffff;
-      animation: pulseBox 2s infinite ease-in-out;
-      cursor: pointer;
+      display: none;
+      font-family: 'Stick No Bills', sans-serif;
     }
 
-    .neon-box:hover {
-      background: rgba(0, 255, 255, 0.1);
+    .footer {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      background: #111;
+      box-shadow: 0 -5px 20px #0ff;
+      width: 100%;
     }
 
-    @keyframes pulseBox {
-      0% { box-shadow: 0 0 15px #00ffff; }
-      50% { box-shadow: 0 0 25px #00ffff; }
-      100% { box-shadow: 0 0 15px #00ffff; }
+    .footer h2 {
+      font-family: 'Neonderthaw', cursive;
+      font-size: 1.5rem;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-bottom: 10px;
     }
 
-    .social-icons {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
+    .social-links a {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 15px;
+      color: #fff;
+      background: #0ff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px #0ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Grape Nuts', cursive;
     }
 
-    .social-icons a img {
-      width: 60px;
-      filter: drop-shadow(0 0 10px #00ffff);
-      transition: 0.3s;
-    }
-
-    .social-icons a img:hover {
-      transform: scale(1.2);
+    .social-links a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #0ff;
+      background: #08f;
     }
 
     .developer {
-      margin-top: 40px;
-      font-size: 1.5rem;
-      color: #aaa;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: yellow;
     }
 
-    .huzii {
-      font-family: 'Eagle Lake', cursive;
-      font-size: 3rem;
-      background: linear-gradient(90deg, #00ffff, #0080ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px #00ffff;
-      margin-top: 10px;
+    .developer span {
       display: block;
-    }
-
-    .youtube-link {
-      margin-top: 10px;
-    }
-
-    .youtube-link a {
-      color: #00ffff;
-      font-size: 1rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .youtube-link a:hover {
-      text-decoration: underline;
-    }
-
-    .feature-row {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    
-    .ad-container {
-      margin: 30px auto;
-      max-width: 728px;
-      display: flex;
-      justify-content: center;
+      font-size: 1.8rem;
+      font-family: 'Bonheur Royale', cursive;
+      color: red;
+      text-shadow: 0 0 10px red, 0 0 20px red;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">TIKDOWN PRO</div>
-    <div class="tagline">Download High Quality TikTok Videos Without Watermark</div>
-    
-    <input type="text" id="url" placeholder="Paste TikTok video link here..." />
-    <br>
-    <button onclick="startDownload()">Download Now</button>
+    <h1>PAK SIM DATA</h1>
+    <input type="text" id="number" placeholder="Enter mobile number" required />
+    <button onclick="fetchData()">Search</button>
+    <div id="responseBox" class="result"></div>
+    <button id="shareButton" class="share-btn" onclick="shareWhatsApp()">📲 Share on WhatsApp</button>
+  </div>
 
-    <div id="result"></div>
-
-    <div class="neon-boxes">
-      <div class="feature-row">
-        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">💯 Free</div>
-        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Without Watermark</div>
-      </div>
-      <div class="feature-row">
-        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Fast & Secure</div>
-        <div class="neon-box" onclick="window.open('https://uvoonaix.top/4/9246028', '_blank')">Unlimited Downloads</div>
-      </div>
+  <div class="footer">
+    <h2>Join Our Channels</h2>
+    <div class="social-links">
+      <a href="https://t.me/TECHBYHUZII" target="_blank">Telegram</a>
+      <a href="https://whatsapp.com/channel/0029VaqyldOC6ZvZ6uSVmg2q" target="_blank">WhatsApp Channel</a>
+      <a href="https://wa.me/923058190234" target="_blank">WhatsApp Me</a>
     </div>
-
-    <div class="social-icons">
-      <a href="https://wa.me/923407699974"><img src="https://img.icons8.com/fluency/96/whatsapp.png"/></a>
-      <a href="https://whatsapp.com/channel/0029Vb2TegQ8aKvLcZs92Y3r"><img src="https://img.icons8.com/color/96/whatsapp--v1.png"/></a>
-      <a href="https://t.me/TECHBYHUZII"><img src="https://img.icons8.com/color/96/telegram-app--v1.png"/></a>
-      <a href="https://youtube.com/@TECHBYHUZII" target="_blank"><img src="https://img.icons8.com/color/96/youtube-play.png"/></a>
+    <div class="developer">
+      DEVELOPER:
+      <span>BLACK WORLD OFFICIAL</span>
     </div>
-
-    <div class="youtube-link">
-      <a href="https://youtube.com/@TECHBYHUZII" target="_blank">Watch Tutorials on TECHBYHUZII</a>
-    </div>
-
-    <div class="developer">Developer</div>
-    <div class="huzii">HUZII BALOCH</div>
-  </div>
-
-  <!-- 8 AD SCRIPTS BILKUL NEECHE (OUTSIDE MAIN CONTAINER) -->
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
-  </div>
-  
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd7ab4d970ea4a39a0de83f8f1a0afab6',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/d7ab4d970ea4a39a0de83f8f1a0afab6/invoke.js"></script>
   </div>
 
   <script>
-    async function startDownload() {
-      const url = document.getElementById("url").value;
-      const result = document.getElementById("result");
-      
-      result.innerHTML = "Processing...";
+    async function fetchData() {
+      const number = document.getElementById("number").value.trim();
+      const responseBox = document.getElementById("responseBox");
+      const shareButton = document.getElementById("shareButton");
+
+      if (!number) {
+        alert("Please enter a phone number.");
+        return;
+      }
+
+      const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://blackworld-sim-api.vercel.app/api?num=${number}`)}`;
+
       try {
-        const res = await fetch(`https://tikwm.com/api/?url=${encodeURIComponent(url)}`);
-        const data = await res.json();
-        if (data && data.data && data.data.play) {
-          const downloadLink = data.data.play;
-          result.innerHTML = `
-            <a href="${downloadLink}" download="tiktok_video.mp4" style="color:#00ffcc; font-size:1.1rem;">
-              ✅ Click here if download doesn't start
-            </a>
+        const res = await fetch(url);
+        const json = await res.json();
+        const apiData = JSON.parse(json.contents);
+
+        if (apiData.status === "success" && Array.isArray(apiData.data) && apiData.data.length > 0) {
+          const user = apiData.data[0];
+          const content = `
+📞 Mobile: <span class="plain">${user.Mobile || "Not found -contact us 923058190234"}</span>
+👤 Name: ${user.Name || "Not found - contact us 923058190234 "}
+🆔 CNIC: <span class="plain">${user.CNIC || "Not found-contact us 923058190234"}</span>
+📍 Address: ${user.Address || "Not found- contact us 923058190234"}
+📶 Operator: ${user.Operator || "Not found- contact us 923058190234"}
           `;
-          setTimeout(() => {
-            window.location.href = downloadLink;
-          }, 1000);
+          responseBox.innerHTML = content;
+          responseBox.style.display = "block";
+          shareButton.style.display = "inline-block";
         } else {
-          throw new Error("Invalid or unsupported link.");
+          responseBox.innerHTML = `<p style="color: yellow;">Data Not Found</p>`;
+          responseBox.style.display = "block";
+          shareButton.style.display = "none";
         }
       } catch (e) {
-        result.innerHTML = `<div style="color:red;">Error: ${e.message}</div>`;
+        responseBox.innerHTML = `<p style="color: red;">Error fetching data.</p>`;
+        responseBox.style.display = "block";
+        shareButton.style.display = "none";
       }
+    }
+
+    function shareWhatsApp() {
+      const responseBox = document.getElementById("responseBox");
+      const text = encodeURIComponent(responseBox.innerText);
+      const url = `https://wa.me/?text=${text}`;
+      window.open(url, '_blank');
     }
   </script>
 </body>
