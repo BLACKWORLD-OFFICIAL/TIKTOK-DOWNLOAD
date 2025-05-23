@@ -7,6 +7,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
         
+        :root {
+            --primary: #4CAF50;
+            --error: #ff4444;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,37 +20,47 @@
         }
         
         body {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            background: url('https://source.unsplash.com/random/1920x1080/?abstract,dark') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
         
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
         
         .container {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
             width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1s ease-in-out;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -57,136 +72,144 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 28px;
+            font-size: 24px;
             color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .input-group {
             display: flex;
             margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         input {
             flex: 1;
             padding: 12px 15px;
             border: none;
-            border-radius: 8px 0 0 8px;
             background-color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
+            color: #333;
         }
         
         button {
-            padding: 12px 20px;
-            background-color: #4CAF50;
+            padding: 0 20px;
+            background-color: var(--primary);
             color: white;
             border: none;
-            border-radius: 0 8px 8px 0;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-            transform: scale(1.02);
-        }
-        
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            display: none;
-            animation: slideUp 0.5s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .result-item {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .result-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .social-links {
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .social-links p {
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         
-        .social-icons a:hover {
+        button:hover {
+            background-color: #3d8b40;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            display: none;
+            animation: slideUp 0.4s ease-out;
+        }
+        
+        .result.error {
+            border-left-color: var(--error);
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .social-section {
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .social-section p {
+            margin-bottom: 12px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .social-links a:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         
         .developer {
-            margin-top: 20px;
+            margin-top: 15px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.8;
         }
         
         .loading {
             display: none;
             text-align: center;
-            margin-top: 20px;
+            margin: 15px 0;
         }
         
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            border-top: 4px solid #fff;
-            width: 30px;
-            height: 30px;
+            border-top: 3px solid #fff;
+            width: 25px;
+            height: 25px;
             animation: spin 1s linear infinite;
-            margin: 0 auto;
+            margin: 0 auto 10px;
         }
         
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Particle animation */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
         <h1>PAK SIM DATA</h1>
         
         <div class="input-group">
-            <input type="text" id="mobileNumber" placeholder="Enter mobile number" autocomplete="off">
+            <input type="text" id="mobileNumber" placeholder="Enter mobile number" autocomplete="off" value="03465586719">
             <button id="searchBtn">Search</button>
         </div>
         
@@ -199,9 +222,9 @@
             <!-- Results will be displayed here -->
         </div>
         
-        <div class="social-links">
+        <div class="social-section">
             <p>Join Our Channel:</p>
-            <div class="social-icons">
+            <div class="social-links">
                 <a href="https://t.me/TECHBYHUZII" target="_blank">Telegram</a>
                 <a href="https://whatsapp.com/channel/0029VaqyldOC6ZvZ6uSVmg2q" target="_blank">WhatsApp Channel</a>
                 <a href="https://wa.me/+923058190234" target="_blank">WhatsApp Me</a>
@@ -209,8 +232,7 @@
         </div>
         
         <div class="developer">
-            DEVELOPER: <br>
-            BACKGROUND OFFICIAL
+            DEVELOPER: BACKGROUND OFFICIAL
         </div>
     </div>
 
@@ -220,7 +242,46 @@
             const mobileNumber = document.getElementById('mobileNumber');
             const resultDiv = document.getElementById('result');
             const loadingDiv = document.getElementById('loading');
+            const particlesContainer = document.getElementById('particles');
             
+            // Create animated particles
+            function createParticles() {
+                const particleCount = 30;
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 5 + 2;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 10;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.opacity = Math.random() * 0.5 + 0.1;
+                    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Add floating animation to particles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0% { transform: translateY(0) translateX(0); }
+                    50% { transform: translateY(-100px) translateX(20px); }
+                    100% { transform: translateY(0) translateX(0); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            createParticles();
+            
+            // Set up event listeners
             searchBtn.addEventListener('click', fetchData);
             mobileNumber.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
@@ -228,11 +289,12 @@
                 }
             });
             
-            function fetchData() {
+            // Fetch data from API
+            async function fetchData() {
                 const number = mobileNumber.value.trim();
                 
                 if (!number) {
-                    alert('Please enter a mobile number');
+                    showError('Please enter a mobile number');
                     return;
                 }
                 
@@ -240,42 +302,45 @@
                 loadingDiv.style.display = 'block';
                 resultDiv.style.display = 'none';
                 
-                // API URL with the number
-                const apiUrl = `https://blackworld-sim-api.vercel.app/api?num=${number}`;
-                
-                fetch(apiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
+                try {
+                    // API URL with the number
+                    const apiUrl = `https://blackworld-sim-api.vercel.app/api?num=${number}`;
+                    
+                    // Add timestamp to avoid caching
+                    const response = await fetch(`${apiUrl}&t=${Date.now()}`);
+                    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        showError(data.error);
+                    } else {
                         displayResults(data);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        resultDiv.innerHTML = `<div class="result-item" style="color: #ff6b6b;">Error fetching data. Please try again later.</div>`;
-                        resultDiv.style.display = 'block';
-                    })
-                    .finally(() => {
-                        loadingDiv.style.display = 'none';
-                    });
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Error fetching data. Please try again later.');
+                } finally {
+                    loadingDiv.style.display = 'none';
+                }
             }
             
             function displayResults(data) {
                 resultDiv.innerHTML = '';
+                resultDiv.classList.remove('error');
                 
                 if (!data || Object.keys(data).length === 0) {
-                    resultDiv.innerHTML = `<div class="result-item">No data found for this number</div>`;
-                    resultDiv.style.display = 'block';
+                    showError('No data found for this number');
                     return;
                 }
                 
                 for (const [key, value] of Object.entries(data)) {
-                    if (value) { // Only display if value exists
+                    if (value) {
                         const itemDiv = document.createElement('div');
-                        itemDiv.className = 'result-item';
+                        itemDiv.style.marginBottom = '8px';
                         itemDiv.innerHTML = `<strong>${key}:</strong> ${value}`;
                         resultDiv.appendChild(itemDiv);
                     }
@@ -283,6 +348,15 @@
                 
                 resultDiv.style.display = 'block';
             }
+            
+            function showError(message) {
+                resultDiv.innerHTML = `<div style="color: #ff6b6b;">${message}</div>`;
+                resultDiv.classList.add('error');
+                resultDiv.style.display = 'block';
+            }
+            
+            // Try to fetch data automatically when page loads
+            fetchData();
         });
     </script>
 </body>
