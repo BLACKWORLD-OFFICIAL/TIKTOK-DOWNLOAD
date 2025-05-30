@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLACK WORLD OFFICIAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -17,6 +18,30 @@
             background-color: #000;
             color: #0ff;
             overflow-x: hidden;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 255, 255, 0.05),
+                    rgba(0, 255, 255, 0.05) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            background-size: 100% 100%, 3px 3px;
+            z-index: -1;
+            animation: bgScroll 20s linear infinite;
         }
         
         /* Welcome Popup */
@@ -41,6 +66,7 @@
             border-radius: 10px;
             box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
             animation: neonGlow 2s infinite alternate;
+            background-color: rgba(0, 0, 0, 0.7);
         }
         
         .welcome-content h1 {
@@ -100,7 +126,7 @@
         }
         
         .main-box {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
             border: 2px solid #0ff;
             border-radius: 10px;
             padding: 20px;
@@ -108,7 +134,8 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            animation: boxPulse 4s infinite;
+            animation: boxFloat 3s ease-in-out infinite;
+            backdrop-filter: blur(5px);
         }
         
         .main-box:hover {
@@ -131,6 +158,8 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 15px #0ff;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
         
         .content-header {
@@ -152,38 +181,21 @@
         }
         
         .content-item {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             border: 1px solid #0ff;
             border-radius: 8px;
             padding: 15px;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            animation: subBoxGlow 3s infinite alternate;
-        }
-        
-        .content-item::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border: 1px solid #0ff;
-            border-radius: 8px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
+            animation: itemFloat 4s ease-in-out infinite;
+            backdrop-filter: blur(3px);
         }
         
         .content-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 15px #0ff;
-        }
-        
-        .content-item:hover::before {
-            opacity: 1;
-            animation: neonBorder 1.5s infinite alternate;
+            background: rgba(0, 0, 0, 0.4);
         }
         
         .content-item h3 {
@@ -249,6 +261,7 @@
             text-align: center;
             box-shadow: 0 0 20px #0ff;
             position: relative;
+            backdrop-filter: blur(5px);
         }
         
         .info-content h3 {
@@ -298,55 +311,6 @@
             box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
         }
         
-        /* Animations */
-        @keyframes neonGlow {
-            from {
-                text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-            }
-            to {
-                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-            }
-        }
-        
-        @keyframes boxPulse {
-            0% {
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            }
-        }
-        
-        @keyframes subBoxGlow {
-            from {
-                box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-            }
-            to {
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-            }
-        }
-        
-        @keyframes neonBorder {
-            from {
-                box-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-            }
-            to {
-                box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
         /* Simple List Style */
         .simple-list {
             list-style-type: none;
@@ -382,6 +346,126 @@
         .link-item:hover {
             background: rgba(0, 255, 255, 0.2);
             box-shadow: 0 0 10px #0ff;
+        }
+        
+        /* Social Media Icons */
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0ff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px #0ff;
+            animation: pulse 2s infinite;
+        }
+        
+        .social-icon:hover {
+            background: #0ff;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #0ff;
+        }
+        
+        /* About Us Section */
+        .about-section {
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px solid #0ff;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px #0ff;
+            animation: fadeIn 1s;
+        }
+        
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+            animation: neonGlow 2s infinite alternate;
+        }
+        
+        .about-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        /* Animations */
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+            }
+            to {
+                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+            }
+        }
+        
+        @keyframes boxFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes itemFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 5px #0ff;
+            }
+            50% {
+                box-shadow: 0 0 20px #0ff;
+            }
+            100% {
+                box-shadow: 0 0 5px #0ff;
+            }
+        }
+        
+        @keyframes bgScroll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100px;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -469,72 +553,8 @@
                 <div class="content-item">
                     <h3>Cdr jazz</h3>
                     <div class="price-info">
-                        <span class="price">Price: 7</span>
-                        <span class="info" onclick="showInfo('Cdr jazz', '7', 'CDR records for Jazz numbers')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Cnic copy</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 8</span>
-                        <span class="info" onclick="showInfo('Cnic copy', '8', 'CNIC copy with full details')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Issue data</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 9</span>
-                        <span class="info" onclick="showInfo('Issue data', '9', 'Issue data with complete records')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Family tree</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 10</span>
-                        <span class="info" onclick="showInfo('Family tree', '10', 'Family tree information')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Family tree with pic</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 11</span>
-                        <span class="info" onclick="showInfo('Family tree with pic', '11', 'Family tree with pictures')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Traveling history</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 12</span>
-                        <span class="info" onclick="showInfo('Traveling history', '12', 'Complete traveling history')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Password detail</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 13</span>
-                        <span class="info" onclick="showInfo('Password detail', '13', 'Password details for accounts')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Imie tracking</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 14</span>
-                        <span class="info" onclick="showInfo('Imie tracking', '14', 'IMEI tracking service')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Live location</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 15</span>
-                        <span class="info" onclick="showInfo('Live location', '15', 'Live location tracking')">Info</span>
+                        <span class="price">Price: 1</span>
+                        <span class="info" onclick="showInfo('Cdr jazz', '1', 'CDR records for Jazz numbers')">Info</span>
                     </div>
                 </div>
             </div>
@@ -596,78 +616,6 @@
                         <span class="info" onclick="showInfo('gallery hack', '7', 'Gallery hacking service')">Info</span>
                     </div>
                 </div>
-                
-               <div class="content-item">
-                    <h3>mobile restore</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 8</span>
-                        <span class="info" onclick="showInfo('mobile restore', '8', 'Mobile restore service')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>whatsapp crash</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 9</span>
-                        <span class="info" onclick="showInfo('whatsapp crash', '9', 'WhatsApp crash service')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>Hacking course</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 10</span>
-                        <span class="info" onclick="showInfo('Hacking course', '10', 'Complete hacking course')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>whatsapp crash file</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 11</span>
-                        <span class="info" onclick="showInfo('whatsapp crash file', '11', 'WhatsApp crash files')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>simdata base method</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 12</span>
-                        <span class="info" onclick="showInfo('simdata base method', '12', 'SIM database method tutorial')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>simdata base own website</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 13</span>
-                        <span class="info" onclick="showInfo('simdata base own website', '13', 'SIM database own website setup')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>whatsapp otp lock</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 14</span>
-                        <span class="info" onclick="showInfo('whatsapp otp lock', '14', 'WhatsApp OTP lock service')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>fake number trick</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 15</span>
-                        <span class="info" onclick="showInfo('fake number trick', '15', 'Fake number trick tutorial')">Info</span>
-                    </div>
-                </div>
-                
-                <div class="content-item">
-                    <h3>call from unknown number</h3>
-                    <div class="price-info">
-                        <span class="price">Price: 16</span>
-                        <span class="info" onclick="showInfo('call from unknown number', '16', 'Call from unknown number service')">Info</span>
-                    </div>
-                </div>
             </div>
             
             <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
@@ -687,8 +635,8 @@
             
             <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
         </div>
-        
-        <!-- SOCIAL MEDIA Content -->
+
+                <!-- SOCIAL MEDIA Content -->
         <div class="content-area" id="socialContent">
             <div class="content-header">
                 <h2>SOCIAL MEDIA SERVICES</h2>
@@ -704,6 +652,24 @@
             
             <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
         </div>
+        
+        <!-- About Us Section -->
+        <div class="about-section">
+            <h2>ABOUT US</h2>
+            <p>Welcome to Black World Official, your premier destination for advanced digital services. Our team of expert hackers and data specialists provide cutting-edge solutions for all your needs.</p>
+            <p>With years of experience in the industry, we offer reliable and secure services that you can trust. Our mission is to provide top-quality services while maintaining complete confidentiality and security for our clients.</p>
+            <p>Whether you need data access, hacking services, or social media solutions, we've got you covered with our professional and discreet approach.</p>
+        </div>
+    </div>
+    
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://t.me/TECHBYHUZII" target="_blank" class="social-icon">
+            <i class="fab fa-telegram"></i>
+        </a>
+        <a href="tel:923058190234" class="social-icon">
+            <i class="fas fa-phone"></i>
+        </a>
     </div>
     
     <!-- Info Modal -->
