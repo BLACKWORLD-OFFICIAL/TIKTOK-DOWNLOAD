@@ -122,44 +122,47 @@
             text-shadow: 0 0 5px #0ff;
         }
         
-        /* Sub Boxes */
-        .sub-container {
+        /* Content Area */
+        .content-area {
             display: none;
             margin-top: 30px;
             animation: fadeIn 0.5s;
+            border: 2px solid #0ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px #0ff;
         }
         
-        .sub-header {
+        .content-header {
             text-align: center;
             margin-bottom: 20px;
         }
         
-        .sub-header h2 {
+        .content-header h2 {
             font-size: 2rem;
             margin-bottom: 10px;
             text-shadow: 0 0 10px #0ff;
             animation: neonGlow 2s infinite alternate;
         }
         
-        .sub-boxes {
+        .content-items {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
         
-        .sub-box {
+        .content-item {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid #0ff;
             border-radius: 8px;
             padding: 15px;
-            cursor: pointer;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
             animation: subBoxGlow 3s infinite alternate;
         }
         
-        .sub-box::before {
+        .content-item::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -173,20 +176,21 @@
             transition: opacity 0.3s;
         }
         
-        .sub-box:hover {
+        .content-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 15px #0ff;
         }
         
-        .sub-box:hover::before {
+        .content-item:hover::before {
             opacity: 1;
             animation: neonBorder 1.5s infinite alternate;
         }
         
-        .sub-box h3 {
+        .content-item h3 {
             font-size: 1.2rem;
             margin-bottom: 5px;
             color: #0ff;
+            text-shadow: 0 0 5px #0ff;
         }
         
         .price-info {
@@ -204,12 +208,16 @@
         .price {
             background: rgba(0, 255, 255, 0.2);
             border: 1px solid #0ff;
+            color: #0ff;
+            text-shadow: 0 0 3px #0ff;
         }
         
         .info {
             background: rgba(255, 0, 255, 0.2);
             border: 1px solid #f0f;
+            color: #f0f;
             cursor: pointer;
+            text-shadow: 0 0 3px #f0f;
         }
         
         .info:hover {
@@ -253,6 +261,7 @@
         .info-content p {
             font-size: 1.1rem;
             margin-bottom: 20px;
+            color: #0ff;
         }
         
         .close-info {
@@ -270,60 +279,23 @@
             color: #000;
         }
         
-        /* Social Media Popup */
-        .social-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s;
-        }
-        
-        .social-content {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #f0f;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 0 20px #f0f, 0 0 40px #f0f;
-            animation: socialGlow 2s infinite alternate;
-        }
-        
-        .social-content h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #f0f;
-            text-shadow: 0 0 10px #f0f;
-        }
-        
-        .social-content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .close-social {
+        /* Back Button */
+        .back-btn {
+            display: block;
+            margin: 20px auto;
             background: transparent;
-            color: #f0f;
-            border: 2px solid #f0f;
+            color: #0ff;
+            border: 2px solid #0ff;
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 5px;
             transition: all 0.3s;
         }
         
-        .close-social:hover {
-            background: #f0f;
+        .back-btn:hover {
+            background: #0ff;
             color: #000;
-            box-shadow: 0 0 10px #f0f, 0 0 20px #f0f;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
         }
         
         /* Animations */
@@ -333,15 +305,6 @@
             }
             to {
                 text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-            }
-        }
-        
-        @keyframes socialGlow {
-            from {
-                box-shadow: 0 0 10px #f0f, 0 0 20px #f0f;
-            }
-            to {
-                box-shadow: 0 0 20px #f0f, 0 0 40px #f0f, 0 0 60px #f0f;
             }
         }
         
@@ -384,51 +347,41 @@
             }
         }
         
-        /* Back Button */
-        .back-btn {
-            display: block;
-            margin: 20px auto;
-            background: transparent;
-            color: #0ff;
-            border: 2px solid #0ff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s;
+        /* Simple List Style */
+        .simple-list {
+            list-style-type: none;
+            padding: 0 20px;
         }
         
-        .back-btn:hover {
-            background: #0ff;
-            color: #000;
-            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-        }
-        
-        /* Free Tools Content */
-        .free-tools-content {
-            text-align: center;
-            padding: 20px;
-            border: 2px solid #0ff;
-            border-radius: 10px;
-            margin-top: 20px;
-            animation: subBoxGlow 3s infinite alternate;
-        }
-        
-        .free-tools-content p {
-            margin-bottom: 15px;
+        .simple-list li {
+            margin-bottom: 10px;
             font-size: 1.1rem;
+            color: #0ff;
+            text-shadow: 0 0 3px #0ff;
+            padding: 8px;
+            border-bottom: 1px dashed rgba(0, 255, 255, 0.3);
         }
         
-        .free-tools-content a {
+        .simple-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Link Style */
+        .link-item {
             color: #0ff;
             text-decoration: none;
-            border-bottom: 1px dashed #0ff;
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #0ff;
+            border-radius: 5px;
             transition: all 0.3s;
+            text-align: center;
         }
         
-        .free-tools-content a:hover {
-            color: #f0f;
-            text-shadow: 0 0 5px #f0f;
-            border-bottom-color: #f0f;
+        .link-item:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 10px #0ff;
         }
     </style>
 </head>
@@ -466,291 +419,293 @@
             </div>
         </div>
         
-        <!-- NADRA DATA Sub Content -->
-        <div class="sub-container" id="nadraSub">
-            <div class="sub-header">
+        <!-- NADRA DATA Content -->
+        <div class="content-area" id="nadraContent">
+            <div class="content-header">
                 <h2>NADRA DATA SERVICES</h2>
             </div>
             
-            <div class="sub-boxes">
-                <div class="sub-box" data-info="SIM database information with full details">
+            <div class="content-items">
+                <div class="content-item">
                     <h3>Sim data base</h3>
                     <div class="price-info">
                         <span class="price">Price: 2</span>
-                        <span class="info" onclick="showInfo('Sim data base', '2')">Info</span>
+                        <span class="info" onclick="showInfo('Sim data base', '2', 'SIM database information with full details')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CDR records for Telenor numbers">
+                <div class="content-item">
                     <h3>Cdr telenor</h3>
                     <div class="price-info">
                         <span class="price">Price: 3</span>
-                        <span class="info" onclick="showInfo('Cdr telenor', '3')">Info</span>
+                        <span class="info" onclick="showInfo('Cdr telenor', '3', 'CDR records for Telenor numbers')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CDR records for Ufone numbers">
+                <div class="content-item">
                     <h3>Cdr ufone</h3>
                     <div class="price-info">
                         <span class="price">Price: 4</span>
-                        <span class="info" onclick="showInfo('Cdr ufone', '4')">Info</span>
+                        <span class="info" onclick="showInfo('Cdr ufone', '4', 'CDR records for Ufone numbers')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CDR records for Zong numbers">
-                      <h3>Cdr zong</h3>
+                <div class="content-item">
+                    <h3>Cdr zong</h3>
                     <div class="price-info">
                         <span class="price">Price: 5</span>
-                        <span class="info" onclick="showInfo('Cdr zong', '5')">Info</span>
+                        <span class="info" onclick="showInfo('Cdr zong', '5', 'CDR records for Zong numbers')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CDR records for Mobilink numbers">
+                <div class="content-item">
                     <h3>Cdr moblink</h3>
                     <div class="price-info">
                         <span class="price">Price: 6</span>
-                        <span class="info" onclick="showInfo('Cdr moblink', '6')">Info</span>
+                        <span class="info" onclick="showInfo('Cdr moblink', '6', 'CDR records for Mobilink numbers')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CDR records for Jazz numbers">
+                <div class="content-item">
                     <h3>Cdr jazz</h3>
                     <div class="price-info">
                         <span class="price">Price: 7</span>
-                        <span class="info" onclick="showInfo('Cdr jazz', '7')">Info</span>
+                        <span class="info" onclick="showInfo('Cdr jazz', '7', 'CDR records for Jazz numbers')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="CNIC copy with full details">
+                <div class="content-item">
                     <h3>Cnic copy</h3>
                     <div class="price-info">
                         <span class="price">Price: 8</span>
-                        <span class="info" onclick="showInfo('Cnic copy', '8')">Info</span>
+                        <span class="info" onclick="showInfo('Cnic copy', '8', 'CNIC copy with full details')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Issue data with complete records">
+                <div class="content-item">
                     <h3>Issue data</h3>
                     <div class="price-info">
                         <span class="price">Price: 9</span>
-                        <span class="info" onclick="showInfo('Issue data', '9')">Info</span>
+                        <span class="info" onclick="showInfo('Issue data', '9', 'Issue data with complete records')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Family tree information">
+                <div class="content-item">
                     <h3>Family tree</h3>
                     <div class="price-info">
                         <span class="price">Price: 10</span>
-                        <span class="info" onclick="showInfo('Family tree', '10')">Info</span>
+                        <span class="info" onclick="showInfo('Family tree', '10', 'Family tree information')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Family tree with pictures">
+                <div class="content-item">
                     <h3>Family tree with pic</h3>
                     <div class="price-info">
                         <span class="price">Price: 11</span>
-                        <span class="info" onclick="showInfo('Family tree with pic', '11')">Info</span>
+                        <span class="info" onclick="showInfo('Family tree with pic', '11', 'Family tree with pictures')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Complete traveling history">
+                <div class="content-item">
                     <h3>Traveling history</h3>
                     <div class="price-info">
                         <span class="price">Price: 12</span>
-                        <span class="info" onclick="showInfo('Traveling history', '12')">Info</span>
+                        <span class="info" onclick="showInfo('Traveling history', '12', 'Complete traveling history')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Password details for accounts">
+                <div class="content-item">
                     <h3>Password detail</h3>
                     <div class="price-info">
                         <span class="price">Price: 13</span>
-                        <span class="info" onclick="showInfo('Password detail', '13')">Info</span>
+                        <span class="info" onclick="showInfo('Password detail', '13', 'Password details for accounts')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="IMEI tracking service">
+                <div class="content-item">
                     <h3>Imie tracking</h3>
                     <div class="price-info">
                         <span class="price">Price: 14</span>
-                        <span class="info" onclick="showInfo('Imie tracking', '14')">Info</span>
+                        <span class="info" onclick="showInfo('Imie tracking', '14', 'IMEI tracking service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Live location tracking">
+                <div class="content-item">
                     <h3>Live location</h3>
                     <div class="price-info">
                         <span class="price">Price: 15</span>
-                        <span class="info" onclick="showInfo('Live location', '15')">Info</span>
+                        <span class="info" onclick="showInfo('Live location', '15', 'Live location tracking')">Info</span>
                     </div>
                 </div>
             </div>
             
-            <button class="back-btn" onclick="hideSubContainer('nadraSub')">BACK TO MAIN</button>
+            <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
         </div>
         
-                 <h2>HACKING DATA SERVICES</h2>
+        <!-- HACKING DATA Content -->
+        <div class="content-area" id="hackingContent">
+            <div class="content-header">
+                <h2>HACKING DATA SERVICES</h2>
             </div>
             
-            <div class="sub-boxes">
-                <div class="sub-box" data-info="Temporary ban removal for WhatsApp">
+            <div class="content-items">
+                <div class="content-item">
                     <h3>Whatsapp temporary ban</h3>
                     <div class="price-info">
                         <span class="price">Price: 2</span>
-                        <span class="info" onclick="showInfo('Whatsapp temporary ban', '2')">Info</span>
+                        <span class="info" onclick="showInfo('Whatsapp temporary ban', '2', 'Temporary ban removal for WhatsApp')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Permanent ban removal for WhatsApp">
+                <div class="content-item">
                     <h3>WhatsApp permanent ban</h3>
                     <div class="price-info">
                         <span class="price">Price: 3</span>
-                        <span class="info" onclick="showInfo('WhatsApp permanent ban', '3')">Info</span>
+                        <span class="info" onclick="showInfo('WhatsApp permanent ban', '3', 'Permanent ban removal for WhatsApp')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Permanent unban service for WhatsApp">
+                <div class="content-item">
                     <h3>whatsapp permanent unban</h3>
                     <div class="price-info">
                         <span class="price">Price: 4</span>
-                        <span class="info" onclick="showInfo('whatsapp permanent unban', '4')">Info</span>
+                        <span class="info" onclick="showInfo('whatsapp permanent unban', '4', 'Permanent unban service for WhatsApp')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="92 game hacking service">
+                <div class="content-item">
                     <h3>92 game hack</h3>
                     <div class="price-info">
                         <span class="price">Price: 5</span>
-                        <span class="info" onclick="showInfo('92 game hack', '5')">Info</span>
+                        <span class="info" onclick="showInfo('92 game hack', '5', '92 game hacking service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Mobile hacking service">
+                <div class="content-item">
                     <h3>Mobile hack</h3>
                     <div class="price-info">
                         <span class="price">Price: 6</span>
-                        <span class="info" onclick="showInfo('Mobile hack', '6')">Info</span>
+                        <span class="info" onclick="showInfo('Mobile hack', '6', 'Mobile hacking service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Gallery hacking service">
+                <div class="content-item">
                     <h3>gallery hack</h3>
                     <div class="price-info">
                         <span class="price">Price: 7</span>
-                        <span class="info" onclick="showInfo('gallery hack', '7')">Info</span>
+                        <span class="info" onclick="showInfo('gallery hack', '7', 'Gallery hacking service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Mobile restore service">
+                <div class="content-item">
                     <h3>mobile restore</h3>
                     <div class="price-info">
                         <span class="price">Price: 8</span>
-                        <span class="info" onclick="showInfo('mobile restore', '8')">Info</span>
+                        <span class="info" onclick="showInfo('mobile restore', '8', 'Mobile restore service')">Info</span>
                     </div>
                 </div>
-                
-                <div class="sub-box" data-info="WhatsApp crash service">
+                   <div class="content-item">
                     <h3>whatsapp crash</h3>
                     <div class="price-info">
                         <span class="price">Price: 9</span>
-                        <span class="info" onclick="showInfo('whatsapp crash', '9')">Info</span>
+                        <span class="info" onclick="showInfo('whatsapp crash', '9', 'WhatsApp crash service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Complete hacking course">
+                <div class="content-item">
                     <h3>Hacking course</h3>
                     <div class="price-info">
                         <span class="price">Price: 10</span>
-                        <span class="info" onclick="showInfo('Hacking course', '10')">Info</span>
+                        <span class="info" onclick="showInfo('Hacking course', '10', 'Complete hacking course')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="WhatsApp crash files">
+                <div class="content-item">
                     <h3>whatsapp crash file</h3>
                     <div class="price-info">
                         <span class="price">Price: 11</span>
-                        <span class="info" onclick="showInfo('whatsapp crash file', '11')">Info</span>
+                        <span class="info" onclick="showInfo('whatsapp crash file', '11', 'WhatsApp crash files')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="SIM database method tutorial">
+                <div class="content-item">
                     <h3>simdata base method</h3>
                     <div class="price-info">
                         <span class="price">Price: 12</span>
-                        <span class="info" onclick="showInfo('simdata base method', '12')">Info</span>
+                        <span class="info" onclick="showInfo('simdata base method', '12', 'SIM database method tutorial')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="SIM database own website setup">
+                <div class="content-item">
                     <h3>simdata base own website</h3>
                     <div class="price-info">
                         <span class="price">Price: 13</span>
-                        <span class="info" onclick="showInfo('simdata base own website', '13')">Info</span>
+                        <span class="info" onclick="showInfo('simdata base own website', '13', 'SIM database own website setup')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="WhatsApp OTP lock service">
+                <div class="content-item">
                     <h3>whatsapp otp lock</h3>
                     <div class="price-info">
                         <span class="price">Price: 14</span>
-                        <span class="info" onclick="showInfo('whatsapp otp lock', '14')">Info</span>
+                        <span class="info" onclick="showInfo('whatsapp otp lock', '14', 'WhatsApp OTP lock service')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Fake number trick tutorial">
+                <div class="content-item">
                     <h3>fake number trick</h3>
                     <div class="price-info">
                         <span class="price">Price: 15</span>
-                        <span class="info" onclick="showInfo('fake number trick', '15')">Info</span>
+                        <span class="info" onclick="showInfo('fake number trick', '15', 'Fake number trick tutorial')">Info</span>
                     </div>
                 </div>
                 
-                <div class="sub-box" data-info="Call from unknown number service">
+                <div class="content-item">
                     <h3>call from unknown number</h3>
                     <div class="price-info">
                         <span class="price">Price: 16</span>
-                        <span class="info" onclick="showInfo('call from unknown number', '16')">Info</span>
+                        <span class="info" onclick="showInfo('call from unknown number', '16', 'Call from unknown number service')">Info</span>
                     </div>
                 </div>
             </div>
             
-            <button class="back-btn" onclick="hideSubContainer('hackingSub')">BACK TO MAIN</button>
+            <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
         </div>
         
-        <!-- FREE TOOLS Sub Content -->
-        <div class="sub-container" id="freeSub">
-            <div class="sub-header">
+        <!-- FREE TOOLS Content -->
+        <div class="content-area" id="freeContent">
+            <div class="content-header">
                 <h2>FREE HACKING TOOLS</h2>
             </div>
             
-            <div class="free-tools-content">
-                <p>Join our WhatsApp channel for free hacking tools and updates:</p>
-                <p><a href="https://whatsapp.com/channel/0029VaqyldOC6ZvZ6uSVmg2q" target="_blank">WhatsApp Channel Link</a></p>
-                
-                <p>Follow us on Telegram:</p>
-                <p><a href="https://t.me/TECHBYHUZII" target="_blank">TECHBYHUZII</a></p>
-                
-                <p>Contact us directly:</p>
-                <p>Number: 923058190234</p>
+            <ul class="simple-list">
+                <li>WhatsApp Channel: <a href="https://whatsapp.com/channel/0029VaqyldOC6ZvZ6uSVmg2q" target="_blank" class="link-item">Join Here</a></li>
+                <li>Telegram: TECHBYHUZII</li>
+                <li>Contact Number: 923058190234</li>
+            </ul>
+            
+            <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
+        </div>
+        
+        <!-- SOCIAL MEDIA Content -->
+        <div class="content-area" id="socialContent">
+            <div class="content-header">
+                <h2>SOCIAL MEDIA SERVICES</h2>
             </div>
             
-            <button class="back-btn" onclick="hideSubContainer('freeSub')">BACK TO MAIN</button>
+            <ul class="simple-list">
+                <li>Account Sales/Purchases</li>
+                <li>Likes, Followers, Views Services</li>
+                <li>Available for TikTok, YouTube, Instagram, Facebook</li>
+                <li>Complete Social Media Solutions</li>
+                <li>Verified Accounts Available</li>
+            </ul>
+            
+            <button class="back-btn" onclick="hideContent()">BACK TO MAIN</button>
         </div>
     </div>
     
-    <!-- Social Media Popup -->
-    <div class="social-popup" id="socialPopup">
-        <div class="social-content">
-            <h2>SOCIAL MEDIA SERVICES</h2>
-            <p>
-                We provide complete social media services including account sales/purchases and engagement services.<br><br>
-                Available for TikTok, YouTube, Instagram, Facebook and other platforms.<br><br>
-                Services include: Account sales/purchases, Likes, Followers, Views, and more.
-            </p>
-            <button class="close-social" id="closeSocial">CLOSE</button>
-        </div>
-    </div>
-        <!-- Info Modal -->
+    <!-- Info Modal -->
     <div class="info-modal" id="infoModal">
         <div class="info-content">
             <h3 id="infoTitle">Service Information</h3>
@@ -768,52 +723,54 @@
         
         // Main Box Click Handlers
         document.getElementById('nadraData').addEventListener('click', function() {
-            document.getElementById('nadraSub').style.display = 'block';
+            hideAllContent();
+            document.getElementById('nadraContent').style.display = 'block';
         });
         
         document.getElementById('hackingData').addEventListener('click', function() {
-            document.getElementById('hackingSub').style.display = 'block';
+            hideAllContent();
+            document.getElementById('hackingContent').style.display = 'block';
         });
         
         document.getElementById('freeTools').addEventListener('click', function() {
-            document.getElementById('freeSub').style.display = 'block';
+            hideAllContent();
+            document.getElementById('freeContent').style.display = 'block';
         });
         
         document.getElementById('socialMedia').addEventListener('click', function() {
-            document.getElementById('socialPopup').style.display = 'flex';
+            hideAllContent();
+            document.getElementById('socialContent').style.display = 'block';
         });
         
-        // Close Social Popup
-        document.getElementById('closeSocial').addEventListener('click', function() {
-            document.getElementById('socialPopup').style.display = 'none';
-        });
-        
-        // Info Modal Functions
-        function showInfo(title, price) {
-            const box = event.target.closest('.sub-box');
-            const info = box.getAttribute('data-info');
-            
-            document.getElementById('infoTitle').textContent = title;
-            document.getElementById('infoText').textContent = `${info} - Price: ${price}`;
-            document.getElementById('infoModal').style.display = 'flex';
-        }
-        
+        // Close Info Modal
         document.getElementById('closeInfo').addEventListener('click', function() {
             document.getElementById('infoModal').style.display = 'none';
         });
         
-        // Hide Sub Container
-        function hideSubContainer(id) {
-            document.getElementById(id).style.display = 'none';
+        // Hide All Content Areas
+        function hideAllContent() {
+            const contents = document.querySelectorAll('.content-area');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+        }
+        
+        // Hide Content (Back Button)
+        function hideContent() {
+            hideAllContent();
+        }
+        
+        // Show Info Modal
+        function showInfo(title, price, info) {
+            document.getElementById('infoTitle').textContent = title;
+            document.getElementById('infoText').textContent = `${info} - Price: ${price}`;
+            document.getElementById('infoModal').style.display = 'flex';
         }
         
         // Close modals when clicking outside
         window.addEventListener('click', function(event) {
             if (event.target === document.getElementById('infoModal')) {
                 document.getElementById('infoModal').style.display = 'none';
-            }
-            if (event.target === document.getElementById('socialPopup')) {
-                document.getElementById('socialPopup').style.display = 'none';
             }
             if (event.target === document.getElementById('welcomePopup')) {
                 document.getElementById('welcomePopup').style.display = 'none';
@@ -822,4 +779,4 @@
         });
     </script>
 </body>
-                      </html>
+</html>
