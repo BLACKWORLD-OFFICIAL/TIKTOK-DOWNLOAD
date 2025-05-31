@@ -76,26 +76,20 @@
             animation: neonGlow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-out;
         }
 
+    /* Specific adjustment for welcome popup on small screens (e.g., mobile phones) */
+    @media (max-width: 480px) {
         .welcome-popup h1 {
-            color: var(--neon-green);
-            font-size: 3em;
-            text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: .15em solid var(--neon-green); /* The typing cursor */
-            animation: typing 3.5s steps(29, end), blink-caret .75s step-end infinite;
+            font-size: 1.5em; /* Smaller font size for very small screens */
+            padding: 0 10px; /* Add some padding to prevent text from touching edges */
+            white-space: normal; /* Allow text to wrap */
         }
 
-        /* Typing animation */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .welcome-popup {
+            padding: 20px 30px; /* Adjust popup padding for smaller size */
         }
-
-        /* The typewriter cursor effect */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
+    }
+        
+        
             50% { border-color: var(--neon-green); }
         }
 
