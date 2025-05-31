@@ -346,24 +346,26 @@
             100% { box-shadow: 0 0 15px var(--neon-pink), 0 0 25px var(--neon-pink); }
         }
 
-        /* Generic Pop-up for Social Media Services */
-        .generic-popup {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px;
-            border: 2px solid var(--neon-blue);
-            box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink);
-            text-align: center;
-            border-radius: 10px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
-            max-width: 500px;
-            width: 90%;
-            display: none; /* Hidden by default */
-        }
+    /* Generic Pop-up for Social Media Services (Updated) */
+.generic-popup {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink);
+    text-align: center;
+    border-radius: 10px;
+    position: fixed; /* Fixed position */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for true centering */
+    z-index: 1001; /* Ensure it's above the overlay (overlay is 1000) */
+    animation: fadeIn 0.5s ease-out;
+    max-width: 500px;
+    width: 90%;
+    box-sizing: border-box; /* Add this to ensure padding doesn't make it overflow */
+    display: none; /* Hidden by default */
+}
+
 
         .generic-popup h2 {
             color: var(--neon-green);
